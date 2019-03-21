@@ -1,0 +1,626 @@
+@import "normalize";
+$main-color: #770077;
+%nostyle-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin r_t_w_i($url, $width, $height) {
+    width: $width;
+    height: $height;
+    background: url($url) no-repeat;
+    background-size: 100% 100%;
+    text-indent: 110%;
+    overflow: hidden;
+    white-space: nowrap;
+    /* 不管怎樣都不換行 */
+}
+
+img {
+    //不會有任何圖片超出範圍
+    max-width: 100%;
+}
+
+html {
+    font-size: 16px;
+    font-family: sans-serif;
+    line-height: 1.4;
+    /*不給單位em.rem之類*/
+    color: #555;
+}
+
+a {
+    color: #009ced;
+    text-decoration: none;
+    &:hover {
+        color: #0081c3;
+        text-decoration: underline;
+    }
+}
+
+.container {
+    /*置中容器*/
+    width: 1080px;
+    margin: 0 auto;
+    /*邊界的意思~0為上下 auto為左右*/
+}
+
+.top-meau {
+    background: $main-color;
+    height: 36px;
+    ul {
+        @extend %nostyle-list;
+        display: flex;
+        /*可以讓icon變橫排*/
+        justify-content: flex-end;
+        /*讓容器全部靠右*/
+        a {
+            display: block;
+            width: 90px;
+            height: 36px;
+            line-height: 36px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+        }
+    }
+}
+
+.top-meau a:hover {
+    background-color: #ddd;
+}
+
+.top-meau i {
+    margin-right: 5px;
+}
+
+h1.logo img {
+    width: 250px;
+    height: 62px;
+    display: block;
+}
+
+.top-block {
+    widows: 80px;
+}
+
+.top-block .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 9px 0;
+}
+
+.top-block a {
+    /*把<a區塊化*/
+    display: block;
+}
+
+.top-block h1 {
+    margin: 0px;
+}
+
+.search input {
+    width: 258px;
+    height: 28px;
+    border: 1px #ddd solid;
+    border-radius: 17px;
+    /*控制四個角的圓度*/
+}
+
+.search {
+    position: relative;
+}
+
+.search i {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.search input {
+    width: 250px;
+    padding-left: 35px;
+}
+
+.search input:focus {
+    outline: none;
+    border-color: #007720;
+    box-shadow: #009ced 0 0 2px;
+    /*不進行任何位移 顯示寬度為2px*/
+}
+
+
+/* ==========以下是主選單======= */
+
+.main-meun {
+    button {
+        display: none;
+    }
+    background: white;
+    height: 38px;
+    border-top: #ddd 1px solid;
+    border-bottom: #ddd 1px solid;
+    ul {
+        @extend %nostyle-list;
+        display: flex;
+        /*可以讓icon變橫排*/
+        a {
+            /* 預設a是行內元素,不可指定寬高,所以把a區塊化 */
+            display: block;
+            height: 38px;
+            /* 跟容器高度一樣 */
+            line-height: 38px;
+            /* 文字跟容器一樣大 */
+            color: #3d4143;
+            text-align: center;
+            /* 文字置中 */
+            text-decoration: none;
+            /* 不要有底線 */
+            transition-property: background, color;
+            transition-duration: 2s;
+            &:hover {
+                color: #007720;
+                background: mix($main-color, #443744, 10);
+            }
+        }
+    }
+}
+
+.main-meun li {
+    flex: 0 0 20%;
+    /* 投影片p.89 */
+}
+
+
+/* =========index-image======== */
+
+.index-image {
+    height: 400px;
+    background: url(..//img/index-image.jpg) center center no-repeat;
+    background-size: cover;
+    //position: relative;
+    // 參造容器,要改大小所以改成以下
+    .container {
+        //改用定位容器,來當參造容器
+        position: relative;
+        height: 100%;
+        //抓外層容器的高度(index-image)
+    }
+    h2 {
+        font-size: 50px;
+        /* 一個字是50px */
+        color: rgba(255, 255, 255, 0.8);
+        color: #fff;
+        text-shadow: rgba(#fff, 0.8) 0 0 0, rgba(#f00, 0.8) 0 0 10px;
+        position: absolute;
+        /* 變成絕對定位,會包含padding */
+        left: 50%;
+        /* 先用left找到中線 */
+        bottom: 80px;
+        margin: 0 0 0 150px;
+        /* 以中線為基準從左往右推150px */
+        span {
+            display: block;
+            /* 區塊化後造成斷行 */
+            position: relative;
+            /* 要推移文字時要記得設定position */
+            left: 2em;
+            /* 一個字1em，往左(兩個字的距離)2em 50px*2 */
+        }
+    }
+}
+
+
+/* ============new-item============ */
+
+.new-item {
+    padding: 40px 0;
+    ul {
+        @extend %nostyle-list;
+        display: flex;
+        justify-content: space-between;
+        li {
+            flex: 0 0 340px;
+            /* 設定"等寬" */
+        }
+    }
+}
+
+
+/* =====================選物=================== */
+
+.featured-item {
+    background: #eee;
+    padding: 40px 0;
+    /* 上下距離40px 左右0 */
+    h2 {
+        color: $main-color;
+        font-size: 2rem;
+        text-align: center;
+        /* 置中 */
+        margin: 0 0 30px;
+        /* 移除上方間距,下方間距30px */
+    }
+}
+
+.item-content {
+    display: flex;
+    .item-img {
+        flex: 0 0 360px;
+        /* 指定felx寬度 */
+        margin-right: 30px;
+    }
+}
+
+.item-text {
+    flex-grow: 1;
+    /* flex:1 也是同效果 */
+    h3 {
+        margin-top: 0;
+        /* 每個預設瀏覽器都有所以先消除 */
+        font-size: 1.5rem;
+    }
+}
+
+.featured-item .user {
+    float: right;
+    padding-top: 30px;
+    img {
+        display: inline-block;
+        /* 有區塊特性,但不換行 */
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        /* 半徑=50%~~~限圓型可這樣用 */
+        margin-left: 10px;
+        vertical-align: middle;
+        /* 與文字垂直排列 */
+    }
+}
+
+
+/* ==============最新快訊============= */
+
+.news h2 {
+    // 把文字換成圖片
+    margin: 0 0 20px;
+    @include r_t_w_i("../img/news-title@2x.png", 120px, 36px);
+}
+
+.news ul {
+    @extend %nostyle-list;
+    li {
+        padding: 8px;
+        border-bottom: #ddd 1px dotted;
+        a {
+            display: block;
+            /* 將a換成區塊元素,使他可以換行 */
+            white-space: nowrap;
+            /* 不管怎樣都不換行 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* 顯示出刪節線 */
+        }
+    }
+}
+
+.news li:nth-child(even) {
+    /* nth第幾 chidprinciple子元素 (符合第幾個,even雙數時) */
+    background: #f5f5f5;
+}
+
+.new-and-principle .container {
+    display: flex;
+    /* 左右排開 */
+    padding: 40px 0;
+    .news {
+        flex: 1;
+        // flex-grow:1 自動填滿;
+        // flex: 0 0 750px;
+        /* 不延展也不縮減 */
+        min-width: 0;
+    }
+}
+
+.new-and-principle .principle {
+    flex: 0 0 280px;
+    /* 不延展也不縮減 */
+    margin-left: 30px;
+    // 後來改成30px
+    /* auto自動靠左,自動會算出margin值 */
+    display: flex;
+    /* 同時是子元素也是容器 */
+    flex-direction: column-reverse;
+    color: #fff;
+    h2 {
+        /* 標題區塊整體高100 */
+        height: 60px;
+        /* boxmodel高不含padding */
+        margin: 0;
+        padding: 20px;
+        background: #5f5547;
+        position: relative;
+        /* 要給position: absolute;當基準容器 */
+        &::before {
+            // 讓貓圖的嘴動起來
+            content: "";
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            vertical-align: middle;
+            background: #fff url(../img/cat-head-animate@2x.png) no-repeat;
+            background-size: 60px 300px;
+            background-position: relative;
+            animation-name: moving-cat;
+            animation-duration: 0.2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(4);
+        }
+        @keyframes moving-cat {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 0 -240px;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+        &::after {
+            /* 假元素,三角形 */
+            content: "";
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: transparent 8px solid;
+            border-top: $main-color 8px solid;
+            top: 0;
+            /* 貼著頂部顯示 */
+            left: 40px;
+        }
+        img {
+            display: none; //要把圖隱藏起來時
+            // display: inline-block;
+            // width: 60x;
+            // height: 60px;
+            // /* 直徑60px */
+            // border-radius: 50%;
+            // vertical-align: middle;
+            background: white;
+        }
+    }
+}
+
+.principle-content {
+    background: $main-color;
+    padding: 10px;
+    flex-grow: 1;
+    /* 讓這邊尺寸彈性 */
+    li {
+        margin: 10px 0;
+        /* 垂直間距10px */
+        font-size: 18px;
+    }
+}
+
+
+/* =====================page-footer================= */
+
+.page-footer {
+    padding: 40px 0;
+    background-color: #3d4143;
+    color: #fff;
+    text-align: center;
+    .contact ul {
+        @extend %nostyle-list;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* 照順順排 */
+        li {
+            flex: 0 0 340px;
+        }
+    }
+}
+
+.page-footer .contact .business-hours {
+    flex: 0 0 100%;
+    margin: 20px 0;
+}
+
+// 要寫在網頁最後面
+// 先寫的會被蓋掉阿~~~
+// 條件之下,要覆蓋原來的值的樣式,不是巢狀
+// 要覆蓋掉原來的值,所以權重很重要,
+// 不然很難覆蓋阿~~~~
+@media screen and (max-width: 1140px) {
+    .container {
+        // 權重跟前面一樣
+        width: 820px;
+    }
+    .index-image h2 {
+        left: auto;
+        margin: 0;
+        right: 2em;
+    }
+    .new-item ul li {
+        flex: 0 0 260px;
+    }
+    .page-footer .contact ul li {
+        flex: 0 0 260px;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .container {
+        // 權重跟前面一樣
+        width: 740px;
+    }
+    .new-item ul {
+        flex-direction: column;
+        li {
+            display: flex;
+            flex-basis: auto;
+            //因為有預設的行高
+            margin-bottom: 20px;
+            h2 {
+                margin-top: 0;
+            }
+        }
+        li>a {
+            //img的
+            flex: 0 0 200px;
+            margin-right: 20px;
+        }
+        li>div {
+            // 當內容不夠時,也要延展填滿剩下的空隙
+            flex: 1;
+        }
+        li:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .new-and-principle .container {
+        flex-direction: column;
+        padding: 40px 0;
+        .news {
+            margin-bottom: 40px;
+        }
+        .principle h2 {
+            background: transparent;
+            color: #3d4143;
+            padding: 0;
+        }
+        h2::before {
+            border: $main-color 5px solid;
+        }
+        .principle {
+            flex-basis: auto;
+            // 原本有設flex:0 0 260(寬)
+            // 轉向之後會把寬轉成高
+            // 現在要讓它高度是多少就多少~~~
+            margin-left: 0;
+            flex-direction: column;
+             ::after {
+                display: none;
+            }
+        }
+        .principle .principle-content ol {
+            list-style: none;
+        }
+        ol li {
+            position: relative;
+        }
+        // 裝飾性清單
+        ol li::before {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #fff;
+            color: $main-color;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            //定位圈圈的位置
+            top: 2px;
+            left: -25px;
+        }
+        ol li:nth-child(1)::before {
+            content: "1";
+        }
+        ol li:nth-child(2)::before {
+            content: "2";
+        }
+        ol li:nth-child(3)::before {
+            content: "3";
+        }
+    }
+    .page-footer .contact ul {
+        flex-direction: column;
+        li {
+            flex: auto;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        width: 90%;
+        //不管畫面有多窄都占整個畫面的90%
+    }
+    .item-content {
+        flex-direction: column;
+        .item-img {
+            flex-basis: auto;
+            margin: 0 auto;
+            img {
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .featured-item h3 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .top-block {
+        height: auto;
+        .container {
+            flex-direction: column;
+            flex-basis: auto;
+            align-items: center;
+        }
+        h1.logo {
+            margin-bottom: 10px;
+        }
+    }
+    .main-meun {
+        position: relative;
+        .container {
+            width: 100%;
+        }
+        button {
+            display: block;
+            background: #fff;
+            border: none;
+            width: 100%;
+            height: 40px;
+            i {
+                margin-left: 5px;
+            }
+        }
+        ul {
+            width: 100%;
+            top: 40px;
+            background: rgba(#fff, 0.9);
+            z-index: 5;
+            flex-direction: column;
+            position: absolute;
+        }
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .index-image h2 {
+        font-size: 35px;
+    }
+    .new-item li {
+        flex-direction: column;
+        align-items: center;
+    }
+    .new-item li h2 {
+        text-align: center;
+        margin-top: 10px;
+    }
+    .news ul li a {
+        white-space: normal;
+    }
+}

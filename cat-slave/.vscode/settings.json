@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/e846b38c-177b-43b6-b1c0-e031a54d4f66/resourceGroups/2019yunhtmlwebsite/providers/Microsoft.Web/sites/2019yunhtmlwebsite",
+    "appService.deploySubpath": ""
+}
