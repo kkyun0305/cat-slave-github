@@ -8,7 +8,20 @@
     <title>貓奴無極限</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136768318-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-136768318-1');
+    </script>
+    <!-- 追蹤的程式馬 -->
+
 </head>
 
 <body>
@@ -109,7 +122,8 @@
                 <div class="item-text">
                     <h3><a href="#">夏季必備清涼水軟墊</a></h3>
                     <p>
-                        我微笑著迎接可能和你相遇的瞬間世界已灰飛煙滅， 在腳下蔓延下一站是不是天堂，看到了我的翅膀， 才能出現鳳凰對，你只想變成透明的顏色你的早餐裡加了奶油 ，我很好，啦答答啦啦答答唔喔喔從天地來到世界，要帶領我飛翔就是往上比的手指頭屋頂尖尖， 你會在哪裡，安睡在天地的大房間。
+                        我微笑著迎接可能和你相遇的瞬間世界已灰飛煙滅， 在腳下蔓延下一站是不是天堂，看到了我的翅膀， 才能出現鳳凰對，你只想變成透明的顏色你的早餐裡加了奶油
+                        ，我很好，啦答答啦啦答答唔喔喔從天地來到世界，要帶領我飛翔就是往上比的手指頭屋頂尖尖， 你會在哪裡，安睡在天地的大房間。
                     </p>
                     <div class="user">
                         -- 三隻貓的媽 Sarah
@@ -179,15 +193,16 @@
 
 
     <!-- ============================JQuery============================ -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!--============== 寫javascript的地方=========== -->
     <script>
         // 用來處理選單,讓主選單有一個按鈕可以用
-        $(function() {
+        $(function () {
             //縮放完要重整阿~~~~
             if ($(".main-meun button").is(":visible")) {
                 $(".main-meun ul").hide();
-                $(".main-meun button").on("click", function() {
+                $(".main-meun button").on("click", function () {
                     $(".main-meun ul").toggle();
                     $(".main-meun button i").toggleClass("fa-sort-down").toggleClass("fa-sort-up");
                 });
