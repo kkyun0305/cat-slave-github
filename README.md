@@ -1,2 +1,2 @@
 # cat-slave-github
-# 貓奴網站
+# 切出具有RWD的貓奴網站
